@@ -7,13 +7,13 @@ variable "snsName" {
 variable "sqsName" {
   description = "Name of the SQS queue"
   default     = ""
-  type        = "string"
+  type        = string
 }
 
 variable "sqsFifo" {
   description = "Makes SQS FIFO or not"
-  default     = "false"
-  type        = "string"
+  default     = false
+  type        = bool
 }
 
 variable "snsSubscribe" {
@@ -43,11 +43,11 @@ variable "createSqs" {
 variable "sesDomain" {
   description = "Domain for creating SES"
   default     = ""
-  type        = "string"
+  type        = string
 }
 
 variable "zone_id" {
   description = "ID from the Route53 zone where we're going to create the DNS records for SES"
   default     = ""
-  type        = "string"
+  type        = string
 }
