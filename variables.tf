@@ -1,7 +1,7 @@
 variable "snsName" {
   description = "Name of the SNS Topic"
   default     = ""
-  type        = "string"
+  type        = string
 }
 
 variable "sqsName" {
