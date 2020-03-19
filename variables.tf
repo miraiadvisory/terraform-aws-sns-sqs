@@ -16,6 +16,12 @@ variable "sqsFifo" {
   type        = bool
 }
 
+variable "sqsEncrypted" {
+  description = "Enable/disable SQS KMS encrypted"
+  default     = true
+  type        = bool
+}
+
 variable "snsSubscribe" {
   description = "Enable/disable SNS subscription for SQS queues"
   default     = true 
