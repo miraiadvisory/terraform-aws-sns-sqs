@@ -4,17 +4,21 @@ locals {
 }
 
 resource "aws_sns_topic" "sns_topic" {
+  count = var.snsSubscribe ? 1 : 0
+
   name    = var.snsName
-  #policy  = data.aws_iam_policy_document.sns-topic-policy.json
 }
 
 resource "aws_sqs_queue" "sqs_queue" {
   name                              = var.sqsName
   fifo_queue                        = var.sqsFifo
   kms_master_key_id                 = local.kms_master_key_id
+  delay_seconds                     = var.sqsDelay
 }
 
 resource "aws_sqs_queue_policy" "sqs_policy" {
+  count = var.snsSubscribe ? 1 : 0
+
   queue_url = "${aws_sqs_queue.sqs_queue.id}"
 
   policy = <<POLICY
@@ -30,7 +34,7 @@ resource "aws_sqs_queue_policy" "sqs_policy" {
       "Resource": "${aws_sqs_queue.sqs_queue.arn}",
       "Condition": {
         "ArnEquals": {
-          "aws:SourceArn": "${aws_sns_topic.sns_topic.arn}"
+          "aws:SourceArn": "${aws_sns_topic.sns_topic[0].arn}"
         }
       }
     }
@@ -41,7 +45,8 @@ POLICY
 
 resource "aws_sns_topic_subscription" "sns_subscription_sqs" {
   count = var.snsSubscribe ? 1 : 0
-  topic_arn = aws_sns_topic.sns_topic.arn
+
+  topic_arn = aws_sns_topic.sns_topic[0].arn
   protocol  = "sqs"
   endpoint  = aws_sqs_queue.sqs_queue.arn
 }

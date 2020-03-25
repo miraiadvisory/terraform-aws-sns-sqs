@@ -16,6 +16,11 @@ variable "sqsFifo" {
   type        = bool
 }
 
+variable "sqsDelay" {
+  description = "Delay (in seconds) to deliver messages"
+  default     = 0
+  type        = string
+}
 variable "sqsEncrypted" {
   description = "Enable/disable SQS KMS encrypted"
   default     = true
