@@ -19,7 +19,7 @@ resource "aws_sqs_queue" "sqs_queue" {
 resource "aws_sqs_queue_policy" "sqs_policy" {
   count = var.snsSubscribe ? 1 : 0
 
-  queue_url = "${aws_sqs_queue.sqs_queue.id}"
+  queue_url = aws_sqs_queue.sqs_queue.id
 
   policy = <<POLICY
 {
