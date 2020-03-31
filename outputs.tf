@@ -7,3 +7,9 @@ output "this_sqs_arn" {
   description = "The ARN of the SQS queue. Will be of format arn:aws:sqs:::queuename."
   value = aws_sqs_queue.sqs_queue.arn
 }
+
+output "this_sqs_url" {
+  description = "The URL of the SQS queue. Will be of format https://..."
+  value = aws_sqs_queue.sqs_queue.url
+}
+
