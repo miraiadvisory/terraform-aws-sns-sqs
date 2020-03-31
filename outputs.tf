@@ -8,8 +8,8 @@ output "this_sqs_arn" {
   value = aws_sqs_queue.sqs_queue.arn
 }
 
-output "this_sqs_url" {
+output "this_sqs_id" {
   description = "The URL of the SQS queue. Will be of format https://..."
-  value = aws_sqs_queue.sqs_queue.url
+  value = aws_sqs_queue.sqs_queue.id
 }
 
