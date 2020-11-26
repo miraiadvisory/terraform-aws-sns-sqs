@@ -15,6 +15,7 @@ resource "aws_sqs_queue" "sqs_queue" {
   kms_master_key_id                 = local.kms_master_key_id
   delay_seconds                     = var.sqsDelay
   visibility_timeout_seconds        = var.sqsVisTimeout
+  receive_wait_time_seconds         = var.sqsWaitTime
 }
 
 resource "aws_sqs_queue_policy" "sqs_policy" {

@@ -28,6 +28,12 @@ variable "sqsVisTimeout" {
   type        = string
 }
 
+variable "sqsWaitTime" {
+  description = ""
+  default     = 0
+  type        = string
+}
+
 variable "sqsEncrypted" {
   description = "Enable/disable SQS KMS encrypted"
   default     = true
