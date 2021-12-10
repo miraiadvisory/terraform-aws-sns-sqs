@@ -16,6 +16,7 @@ resource "aws_sqs_queue" "sqs_queue" {
   delay_seconds                     = var.sqsDelay
   visibility_timeout_seconds        = var.sqsVisTimeout
   receive_wait_time_seconds         = var.sqsWaitTime
+  tags                              = var.tags
 }
 
 resource "aws_sqs_queue_policy" "sqs_policy" {

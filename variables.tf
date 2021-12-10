@@ -75,3 +75,9 @@ variable "zone_id" {
   default     = ""
   type        = string
 }
+
+variable "tags" {
+  description = "A mapping of tags to assign to the sqs."
+  type        = map(string)
+  default     = {}
+}
